@@ -35,13 +35,16 @@ export class Game {
 
     init(gameDiv) {
         gameDiv.empty();
+
         // this.updateList();
         this.lastChecked = -1;
-        this.words = [];
+        this.count = 0;
 
         let thisGame = this;
 
-        for (let key in this.dict.dict) {
+        for (var key in this.dict.dict) {
+            console.log(key);
+            console.log(this.dict.dict);
             if (this.dict.dict[key].word == "" || 
                 this.dict.dict[key].translate == "") {
                 continue;
@@ -134,11 +137,13 @@ export class Dict {
     }
 
     edit_word(id, word) {
-       this.put(id, word, this.dict[id].translation)
+        let a = this.dict[id].translation
+        this.dict[id] = new Word(word, a)
     }
 
     edit_translation(id, translation) {
-        this.put(id, this.dict[id].word, translation)
+        let a = this.dict[id].word
+        this.dict[id] = new Word(a, translation)
     }
 
     delete(id) {
