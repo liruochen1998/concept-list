@@ -114,11 +114,18 @@ function addTextBox(id, dict, type) {
         "value" : "",
         "name" : id,
     });
-    let edit = (type == "word" ? dict.edit_word : dict.edit_translation);
-    textBox.on('input', function () {
-        edit(id, textBox.val());
-        console.log(dict);
-    })
+
+    if (type == "word") {
+        textBox.on('input', function () {
+            dict.edit_word(id, textBox.val());
+            console.log(dict);
+        });
+    } else {
+        textBox.on('input', function () {
+            dict.edit_translation(id, textBox.val());
+            console.log(dict);
+        });
+    }
     return textBox;
 }
 
