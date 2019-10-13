@@ -58,7 +58,7 @@ function addDeleteButton(id, dict, form) {
     let button = $(document.createElement('button'));
     button.attr({
         "type" : "button",
-        "class" : "btn btn-primary",
+        "class" : "btn btn-outline-primary btn-sm ",
     })
     button.text('delete');
     button.on('click', function () {
@@ -74,10 +74,15 @@ function addTextBox(id, dict, type) {
         alert("YOU ARE DUGUAI!!!");
         return;
     }
+    let textCard = $(document.createElement('div'));
+    textCard.attr({
+        "class" : "card",
+        "style" : "width: 18rem;"
+    });
     let textBox = $(document.createElement('input'));
     textBox.attr({
         "type" : "text",
-        "class" : type,
+        "class" : type + " shadow-sm rounded",
         "value" : "",
         "name" : id,
     });
@@ -92,6 +97,7 @@ function addTextBox(id, dict, type) {
             console.log(dict);
         })
     }
-    return textBox;
+    textCard.append(textBox);
+    return textCard;
 }
 
