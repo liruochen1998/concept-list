@@ -1,3 +1,24 @@
+export class Game {
+    constructor(dict) {
+        this.list = [];
+        if (dict == null) {
+            return;
+        }
+        for (let key in dict) {
+            if (dict[key].word != "" && dict[key].translate != "") {
+                this.list.push(dict[key]);
+            }
+        }
+    }
+
+    clear(target) {
+        target.empty();
+    }
+
+    // create(target) {
+    // }
+}
+
 export class Dict {
     constructor(){
         this.dict = {}
@@ -19,6 +40,7 @@ export class Dict {
         delete this.dict[id]
     }
 }
+
 export class Word {
     constructor(word, translation){
         this.word = word;
