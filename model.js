@@ -1,5 +1,3 @@
-import { Word } from "./word.js"
-
 export class Dict {
     constructor(){
         this.dict = {}
@@ -19,5 +17,11 @@ export class Dict {
 
     delete(id) {
         delete this.dict[id]
+    }
+}
+export class Word {
+    constructor(word, translation){
+        this.word = word;
+        this.translation = translation;
     }
 }

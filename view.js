@@ -1,4 +1,4 @@
-import { Dict } from "./dict.js";
+import { Dict } from "./model.js";
 
 // View file
 
