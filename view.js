@@ -17,7 +17,7 @@ function gameButton(dict) {
         "type": button,
         "class": "btn",
     });
-    button.text('test');
+    button.text('game');
     button.on('click', function () {
         let game = new Game(dict);
         game.clear($("#list"));
