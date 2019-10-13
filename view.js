@@ -10,6 +10,7 @@ $(document).ready(function () {
     $('#control').append(createButton(id, dict));
     $('#control').append(gameButton(dict));
     $('#control').append(hideButton($('#list'), 'translation'));
+    $('#control').append(clearButton(dict));
 });
 
 // new funcionality
@@ -72,6 +73,21 @@ function createButton(id, dict) {
     return button;
 }
 
+function clearButton(dict) {
+    let button = $(document.createElement('button'));
+    button.attr({
+        "type": button,
+        "class": "btn btn-secondary btn-sm",
+    })
+    button.text('clear');
+    button.on('click', function () {
+        $('#list').empty();
+        $('#game').empty();
+        dict.dict = {};
+    });
+    return button;
+}
+
 function addWordPairObj(target, id, dict) {
     //template
     let form = $(document.createElement('form'));
@@ -114,11 +130,17 @@ function addTextBox(id, dict, type) {
         "value" : "",
         "name" : id,
     });
-    let edit = (type == "word" ? dict.edit_word : dict.edit_translation);
-    textBox.on('input', function () {
-        edit(id, textBox.val());
-        console.log(dict);
-    })
+    if (type == "word") {
+        textBox.on('input', function () {
+            dict.edit_word(id, textBox.val());
+            console.log(dict);
+        })
+    } else {
+        textBox.on('input', function () {
+            dict.edit_translation(id, textBox.val());
+            console.log(dict);
+        })
+    }
     return textBox;
 }
 

@@ -34,31 +34,37 @@ export class Game {
     }
 
     init(gameDiv) {
+        gameDiv.empty();
         // this.updateList();
         this.lastChecked = -1;
+        this.words = [];
 
         let thisGame = this;
 
-        for (let key in this.dict) {
-            if (this.dict[key].word == "" || 
-                this.dict[key].translate == "") {
+        for (let key in this.dict.dict) {
+            if (this.dict.dict[key].word == "" || 
+                this.dict.dict[key].translate == "") {
                 continue;
             }
             this.count++;
 
-            let word = $(document.createElement('div'));
-            let tran = $(document.createElement('div'));
+            let word = $(document.createElement('span'));
+            let tran = $(document.createElement('span'));
             word.attr({
-                'class': key + ' ',
+                'class': key + " card bg-info",
+                'style': "width: 9rem; margin: 0.5em 0.1em; padding: 1em 2em;"
             })
             tran.attr({
-                'class': key + ' ',
+                'class': key + " card bg-warning",
+                'style': "width: 9rem; margin: 0.5em 0.1em; padding: 1em 2em;"
             })
-            word.text(this.dict[key].word);
-            tran.text(this.dict[key].translation);
+            word.text(this.dict.dict[key].word);
+            tran.text(this.dict.dict[key].translation);
 
             word.on('click', function () {
-                if (word.attr('class') == lastChecked) {
+                console.log(word.attr('class').split(' ')[0]);
+                console.log(thisGame.count);
+                if (word.attr('class').split(' ')[0] == thisGame.lastChecked) {
                     gameDiv.find('.' + key).hide();
                     if (--(thisGame.count) == 0) {
                         alert("DU GUAI, YOU WIN!!!");
@@ -68,7 +74,8 @@ export class Game {
                 }
             })
             tran.on('click', function () {
-                if (word.attr('class') == lastChecked) {
+                console.log(tran.attr('class').split(' ')[0]);
+                if (word.attr('class').split(' ')[0] == thisGame.lastChecked) {
                     gameDiv.find('.' + key).hide();
                     if (--(thisGame.count) == 0) {
                         alert("DU GUAI, YOU WIN!!!");
@@ -79,6 +86,16 @@ export class Game {
             })
             gameDiv.append(word);
             gameDiv.append(tran);
+            console.log(word);
+            this.words.push(word);
+            this.words.push(tran);
+        }
+        // this.words.sort(function(a, b){
+        //     return Math.random() - Math.random();
+        // })
+        for (let word in this.words) {
+            console.log(word);
+            gameDiv.append(this.words[word]);
         }
     }
 
