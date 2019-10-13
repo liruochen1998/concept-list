@@ -5,15 +5,23 @@ import { Dict } from "./dict.js";
 $(document).ready(function () {
     //template
     let dict = new Dict();
-    console.log('aa');
-    addWordPairObj(1, dict);
-    addWordPairObj(2, dict);
-    addWordPairObj(3, dict);
-    addWordPairObj(4, dict);
-    addWordPairObj(5, dict);
-    console.log(dict);
+    
+    let id = 0;
+    $('body').append(createButton(id, dict));
 });
 
+function createButton(id, dict) {
+    let button = $(document.createElement('button'));
+    button.attr({
+        "type": button,
+        "class": "btn btn-secondary",
+    })
+    button.text('add');
+    button.on('click', function () {
+        addWordPairObj(id++, dict);
+    });
+    return button;
+}
 
 function addWordPairObj(id, dict) {
     //template
@@ -26,12 +34,15 @@ function addWordPairObj(id, dict) {
     $('body').append(form);
 
     dict.put(id, '', '');
+
+    console.log(dict);
 }
 
 function addDeleteButton(id, dict, form) {
     let button = $(document.createElement('button'));
     button.attr({
         "type" : "button",
+        "class" : "btn btn-primary",
     })
     button.text('delete');
     button.on('click', function () {
@@ -44,7 +55,7 @@ function addDeleteButton(id, dict, form) {
 
 function addTextBox(id, dict, type) {
     if (type != "word" && type != "translation") {
-        console.log(id, dict, type);
+        alert("YOU ARE DUGUAI!!!");
         return;
     }
     let textBox = $(document.createElement('input'));
@@ -54,7 +65,6 @@ function addTextBox(id, dict, type) {
         "value" : "",
         "name" : id,
     });
-    console.log(dict);
     if (type == "word") {
         textBox.on('input', function () {
             dict.edit_word(id, textBox.val());
