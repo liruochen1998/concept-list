@@ -11,18 +11,56 @@
 
     <title>HackNC</title>
   </head>
-  <center> 
   <body class="jumbotron">
+    <center>
     <h1>
       Word List
       <small class="text-muted">A HackNC 2019 project</small>
     </h1>
-    <p class="lead">by Wanyong Feng, Qiyang Huang, Ruochen Li, Shengjie Xu</p>
     <hr class="my-4">
-    <p> We don't like to remember concepts, and we know you don't neither. Thus, we invite you to play this game to help you remember hard concepts. Let's get started...</p>
+         <p> We don't like to remember concepts, and we know you don't neither. Thus, we invite you to play this game to help you remember hard concepts. Let's get started...</p>
+    </center>
+    <center>
     <div id="list"></div>
     <div id="game"></div>
     <div id="control"></div>
+    <!-- Button trigger modal -->
+<button type="button" class="btn btn-warning btn-sm" data-toggle="modal" data-target="#exampleModal">
+  help
+  </button>
+  
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">User Manual</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+            <ul class="list-group">
+                <li class="list-group-item">Click "add" to add concepts and corresponding definitions</li>
+                <li class="list-group-item">Click "delete" to get rid of concepts</li>
+                <li class="list-group-item">Click "hide" to hide the right half of the sheet to quickly test yourself</li>
+                <li class="list-group-item">Click "show" to reveal the hidden right-half definitions</li>
+                <li class="list-group-item">Click "game" to play the game that we presented!</li>
+              </ul>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+    <hr class="my-4">
+    <p>After adding concepts, please click the game button, enjoy the game!</p>
+
+    <hr class="my-4">
+    <p class="text-muted">by Wanyong Feng, Qiyang Huang, Ruochen Li, Shengjie Xu</p>
+    <p class="text-muted">October 13th, 2019</p>
+</center>
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
@@ -31,7 +69,5 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 
     <script type="module" src="view.js"></script>
-    <script src="game.js"></script>
   </body>
-</center>
 </html>

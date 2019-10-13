@@ -23,7 +23,7 @@ function gameButton(dict) {
     button.on('click', function () {
         clear($("#list"));
         let game = new Game(dict);
-        game.create($("#game"));
+        game.init($("#game"));
     });
     return button;
 }
