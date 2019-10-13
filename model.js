@@ -1,18 +1,40 @@
 export class Game {
+    /**
+     *  This constructor will link the game to an existing
+     *  Dict object, so it will always be synced. To start
+     *  an actual game, run the `update()` method.
+     */
     constructor(dict) {
+        this.dict = dict;
         this.list = [];
-        if (dict == null) {
+    }
+
+    /**
+     *  Check the current state of the linked Dict object,
+     *  create a list of all valid word-translation pairs.
+     */
+    update() {
+        if (this.dict == null) {
             return;
         }
-        for (let key in dict) {
-            if (dict[key].word != "" && dict[key].translate != "") {
-                this.list.push(dict[key]);
+        this.list = [];
+        for (let key in this.dict) {
+            if (this.dict[key].word != "" && 
+                this.dict[key].translate != "") {
+                this.list.push(this.dict[key]);
             }
         }
     }
 
-    clear(target) {
-        target.empty();
+    linkNew(dict) {
+        this.dict = dict;
+    }
+
+    check() {
+        for(var key in dict){
+            if(dict[key].word == '' || dict[key].translation == '') return false
+        }
+        return true
     }
 
     // create(target) {
