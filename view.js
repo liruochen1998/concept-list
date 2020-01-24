@@ -130,28 +130,16 @@ function addTextBox(id, dict, type) {
         "value" : "",
         "name" : id,
     });
-<<<<<<< HEAD
-=======
-
->>>>>>> 9e7668b3e4fce0e59c1fdf13bc568be5e7075f11
     if (type == "word") {
         textBox.on('input', function () {
             dict.edit_word(id, textBox.val());
             console.log(dict);
-<<<<<<< HEAD
-        })
-=======
         });
->>>>>>> 9e7668b3e4fce0e59c1fdf13bc568be5e7075f11
     } else {
         textBox.on('input', function () {
             dict.edit_translation(id, textBox.val());
             console.log(dict);
-<<<<<<< HEAD
-        })
-=======
         });
->>>>>>> 9e7668b3e4fce0e59c1fdf13bc568be5e7075f11
     }
     return textBox;
 }
